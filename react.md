@@ -212,9 +212,19 @@ render: function() {
 ## ref
 - The ref String Attribute
 ```jsx
-<input ref="myInput" />
-
-this.refs.myInput // DOM node -> built-in DOM components; React Component -> custom components (use React.findDOMNode to get DOM node)
+React.createClass({
+    handleClick: function () {
+        this.refs.myTextInput.focus(); // DOM node -> built-in DOM components
+                                       // React Component -> custom components
+    },
+    render: function () {
+        return (
+            <div>
+                <input type="text" ref="myTextInput"/>
+            </div>
+        );
+    }
+});
 ```
 
 - The ref Callback Attribute
@@ -255,15 +265,15 @@ React.createClass({
 
 ## Component Lifecycle
 1. Mounting
-- `componentWillMount()`
-- `componentDidMount()`: fetch data
+    - `componentWillMount()`
+    - `componentDidMount()`: fetch data
 2. Updating
-- `componentWillReceiveProps(object nextProps)`
-- `shouldComponentUpdate(object nextProps, object nextState)`
-- `componentWillUpdate(object nextProps, object nextState)`: cannot use `this.setState()`
-- `componentDidUpdate(object prevProps, object prevState)`:  operate on the DOM
+    + `componentWillReceiveProps(object nextProps)`
+    + `shouldComponentUpdate(object nextProps, object nextState)`
+    + `componentWillUpdate(object nextProps, object nextState)`: cannot use `this.setState()`
+    + `componentDidUpdate(object prevProps, object prevState)`:  operate on the DOM
 3. Unmounting
-- `componentWillUnmount()`
+    - `componentWillUnmount()`
 
 ## Full API
 - [Top-level API](http://facebook.github.io/react/docs/top-level-api.html): `React.*`
