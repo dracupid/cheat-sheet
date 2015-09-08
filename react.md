@@ -38,10 +38,11 @@ class App extends React.Component {
 
     static propTypes = {name: React.PropTypes.string.isRequired};
 
-    state = {timestamp: new Date()}; // ES7 property initializers or use this.state in consructor
+    // state = {timestamp: new Date()}; // ES7 property initializers
 
     constructor(props) {  // componentWillMount
         super(props);
+        this.state = {timestamp: new Date()};
     }
 
     render() {
@@ -53,6 +54,9 @@ class App extends React.Component {
 }
 React.render(<App name="Dracupid"/>, document.body);
 ```
+
+## JSX
+See [JSX cheet sheet](jsx.md)
 
 ##Properties & States
 - property (`this.props`): Access parameters passed from the parent.
@@ -128,12 +132,12 @@ React.createClass({
 this.setState({ msg: "Hmm.." }); // set state
 this.state.username              // get state
 
-React.createClass({
-    getInitialState: function () {
-        return { msg: "No" };
-    },
-
-);
+Class A extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {msg: 'no'};
+    }
+}
 ```
 
 ## Events
