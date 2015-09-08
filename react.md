@@ -31,7 +31,7 @@ let App = React.createClass({
 React.render(<App name="Dracupid"/>, document.body);
 
 ```
-or [ES6+](http://babeljs.io/blog/2015/06/07/react-on-es6-plus/)
+or [ES6+](http://babeljs.io/blog/2015/06/07/react-on-es6-plus/) (Used in this doc)
 ```jsx
 class App extends React.Component {
     static defaultProps = {name: "Nobody"};
@@ -69,15 +69,12 @@ See [JSX cheet sheet](jsx.md)
 // get value
 this.props.name
 
-
-React.createClass({
+Class A extends React.Component {
     // Default value
-    getDefaultProps: function () {
-        return { name: "Hello" };
-    }
+    static defaultProps = {name: "Hello"};
 
     // validation (Only in development mode)
-    propTypes: {
+    static propTypes = {
         // A prop is am optional JS primitive.
         optionalArray: React.PropTypes.array, // bool, func, number, object, string
 
@@ -114,13 +111,13 @@ React.createClass({
 
         // You can also specify a custom validator. It should return an Error
         // object if the validation fails.
-        customProp: function (props, propName, componentName) {
+        customProp: (props, propName, componentName) => {
             if (!/matchme/.test(props[propName])) {
                 return new Error('Validation failed!');
             }
         }
     }
-});
+}
 ```
 
 - state (`this.state`): Manage dynamic data
@@ -193,58 +190,64 @@ let TickTock = React.createClass({
 #### Controlled Components
 The value of the rendered element will always reflect the value prop.
 ```jsx
-getInitialState: function() {
-    return {value: 'Hello!'};
-},
-handleChange: function(event) {
-    this.setState({value: event.target.value});
-},
-render: function() {
-    let value = this.state.value;
-    return <input type="text" value={value} onChange={this.handleChange} />;
+class A extends React.Component {
+    getInitialState() {
+        return {value: 'Hello!'};
+    }
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+    render() {
+        let value = this.state.value;
+        return <input type="text" value={value} onChange={this.handleChange} />;
+    }
 }
 ```
 
 #### Uncontrolled Components
 The value of the rendered element will reflect the user's input.
 ```jsx
-render: function() {
-    return <input type="text" defaultValue="Hello!" />; // also defaultChecked
+class A extends React.Component {
+    render() {
+        return <input type="text" defaultValue="Hello!" />; // also defaultChecked
+    }
 }
 ```
 
 ## ref
 - The ref String Attribute
 ```jsx
-React.createClass({
-    handleClick: function () {
+class A extends React.Component {
+    handleClick() {
         this.refs.myTextInput.focus(); // DOM node -> built-in DOM components
                                        // React Component -> custom components
-    },
-    render: function () {
+    }
+    render() {
         return (
             <div>
                 <input type="text" ref="myTextInput"/>
             </div>
         );
     }
-});
+}
 ```
 
 - The ref Callback Attribute
     - Executed immediately after the component is mounted.
     - When the referenced component is unmounted and whenever the ref changes, the old ref will be called with null as an argument.
 ```jsx
-render: function() {
-    return (
-      <TextInput
-        ref={function(input) {
-          if (input != null) {
-            input.focus();
-          }
-        }} />
-    );
-  }
+class A extends React.Component {
+    render() {
+        return (
+          <TextInput
+            ref={function(input) {
+              if (input != null) {
+                input.focus();
+              }
+            }} />
+        );
+      }
+ }
 ```
 
 ## Underlying DOM API
@@ -252,20 +255,7 @@ render: function() {
 React.findDOMNode(component); // Only mounted components
 ```
 component can be `this` or a ref or else.
-```jsx
-React.createClass({
-    handleClick: function () {
-        this.refs.myTextInput.focus();
-    },
-    render: function () {
-        return (
-            <div>
-                <input type="text" ref="myTextInput"/>
-            </div>
-        );
-    }
-});
-```
+
 
 ## Component Lifecycle
 1. Mounting
