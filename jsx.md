@@ -5,8 +5,9 @@ version: 0.13.3
 - [Reference](http://facebook.github.io/react/docs/displaying-data.html)
 - [Get Start](http://facebook.github.io/react/docs/getting-started.html)
 - tools
-    - [JSX to javascript compiler](http://facebook.github.io/react/jsx-compiler.html)
-    - [HTML to JSX converter](http://facebook.github.io/react/html-jsx.html)
+    - [online JSX to javascript compiler](http://facebook.github.io/react/jsx-compiler.html)
+    - [inline HTML to JSX converter](http://facebook.github.io/react/html-jsx.html)
+    - [Babel(JSX compiler)](https://babeljs.io/)
 
 ## Basic tags
 XML-like syntax
