@@ -122,7 +122,7 @@ React.createClass({
 - state (`this.state`): Manage dynamic data
     -  UI is refreshed based on its state.
     -  `setState(data, callback)`:  change state and re-render the component.
-    -  Try to keep as many of components as possible stateless
+    -  Try to keep as many of components stateless as possible .
 
 ```jsx
 this.setState({ msg: "Hmm.." }); // set state
