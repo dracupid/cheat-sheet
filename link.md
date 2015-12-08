@@ -42,3 +42,7 @@
 
 - Data URIs
     + [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/data_URIs)
+
+- [Open Search](http://www.opensearch.org/)
+
+- []
