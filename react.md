@@ -1,10 +1,34 @@
-React
-- version: 0.14-RC1
-- [Home](http://facebook.github.io/react)
+[React](http://facebook.github.io/react)
+=======
+- version: 0.14.3
 - [Tools](https://github.com/facebook/react/wiki/Complementary-Tools)
-- [0.14 changelog](https://github.com/facebook/react/pull/4797)
 
 ## Quick Look
+[ES6 Class](http://babeljs.io/blog/2015/06/07/react-on-es6-plus/)
+```jsx
+class App extends React.Component {
+    static defaultProps = {name: "Nobody"};
+
+    static propTypes = {name: React.PropTypes.string.isRequired};
+
+    // state = {timestamp: new Date()}; // ES7 property initializers
+
+    constructor(props) {  // componentWillMount
+        super(props);
+        this.state = {timestamp: new Date()};
+    }
+
+    render() { // Required, return a single child element, pure.
+        return <div onClick={this.handleClick}> Hello {this.props.name} </div>;
+    }
+    handleClick = (e) => {
+        this.setState({timestamp: new Date()});
+    }
+}
+ReactDOM.render(<App name="Dracupid"/>, document.body);
+```
+
+React.createClass
 ```jsx
 let App = React.createClass({
     getDefaultProps: function () {
@@ -19,7 +43,7 @@ let App = React.createClass({
 
     componentWillMount: function () {},
 
-    render: function () { // Required, return a single child element, pure.
+    render: function () {
         return <div onClick={this.handleClick}> Hello {this.props.name} </div>;
     },
 
@@ -28,39 +52,15 @@ let App = React.createClass({
         this.setState({timestamp: new Date()});
   },
 });
-React.render(<App name="Dracupid"/>, document.body);
-
-```
-or [ES6+](http://babeljs.io/blog/2015/06/07/react-on-es6-plus/) (Used in this doc)
-```jsx
-class App extends React.Component {
-    static defaultProps = {name: "Nobody"};
-
-    static propTypes = {name: React.PropTypes.string.isRequired};
-
-    // state = {timestamp: new Date()}; // ES7 property initializers
-
-    constructor(props) {  // componentWillMount
-        super(props);
-        this.state = {timestamp: new Date()};
-    }
-
-    render() {
-        return <div onClick={this.handleClick}> Hello {this.props.name} </div>;
-    }
-    handleClick = (e) => {
-        this.setState({timestamp: new Date()});
-    }
-}
-React.render(<App name="Dracupid"/>, document.body);
+ReactDOM.render(<App name="Dracupid"/>, document.body);
 ```
 
 ## JSX
 See [JSX cheet sheet](jsx.md)
 
-##Properties & States
+## Properties & States
 - property (`this.props`): Access parameters passed from the parent.
-    - Should be immutable.
+    - Immutable.
     - Can only be set by component's owner.
 
 ```jsx
@@ -123,7 +123,6 @@ Class A extends React.Component {
 - state (`this.state`): Manage dynamic data
     -  UI is refreshed based on its state.
     -  `setState(data, callback)`:  change state and re-render the component.
-    -  Try to keep as many of components stateless as possible .
 
 ```jsx
 this.setState({ msg: "Hmm.." }); // set state
@@ -137,6 +136,16 @@ Class A extends React.Component {
 }
 ```
 
+## Stateless Functional Component
+Try to keep as many of components stateless as possible .
+```jsx
+function HelloMessage(props) {
+    return <div>Hello {props.name}</div>;
+}
+ReactDOM.render(<HelloMessage name="Sebastian" />, mountNode);
+```
+- Cannot attach a ref.
+
 ## Events
 Pass event handler as a camelCased prop.
 ```jsx
@@ -146,17 +155,16 @@ Pass event handler as a camelCased prop.
 - **Event delegation**: React doesn't actually attach event handlers to the nodes themselves, but using an internal mapping.
 
 ## Multiple Components
-- Ownership:  An owner is the component that sets the props of other components.
+- Ownership: An owner is the component that sets the props of other components.
 - Children:
 ```jsx
 <Parent><Child /></Parent>
-this.props.children // use React.Children to manipulate it.
+this.props.children // Use React.Children to manipulate it.
 ```
 - Child Reconciliation:  How to re-render children.
     - React reconciles according to the order of the children.
     - Nodes are reused. Use `display: 'none'` to avoid overhead. [performance]
     - Use a coincident `key` property on dynamic children in an array to force the children to be reordered (instead of clobbered) or destroyed (instead of reused). [performance]
-
 
 ## mixin
 ```jsx
@@ -219,7 +227,7 @@ class A extends React.Component {
 ```jsx
 class A extends React.Component {
     handleClick() {
-        this.refs.myTextInput.focus(); // DOM node -> built-in DOM components
+        this.refs.myTextInput.focus(); // DOM node -> actual DOM node
                                        // React Component -> custom components
     }
     render() {
@@ -254,8 +262,7 @@ class A extends React.Component {
 ```jsx
 React.findDOMNode(component); // Only mounted components
 ```
-component can be `this` or a ref or else.
-
+- component can be `this` or a ref or else.
 
 ## Component Lifecycle
 1. Mounting
