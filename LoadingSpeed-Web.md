@@ -1,7 +1,7 @@
 ## 提升页面（首屏）加载速度checklist
 
 0. 减少页面加载需要的请求数量
-    - 使用CSS Sprites合图
+    - 使用CSS Sprites合图 或 Base64 data-uri
     - 合并js和css文件
 0. 减少需下载资源的大小
     - 对图片进行合理压缩，控制大小和质量
@@ -24,3 +24,4 @@
 
 #### 参考资料
 - [H5性能优化方案](http://ddtalk.github.io/blog/2015/09/07/dingding-first/)
+- [移动H5前端性能优化指南](http://isux.tencent.com/h5-performance.html)
