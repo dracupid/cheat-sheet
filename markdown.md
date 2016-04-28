@@ -4,6 +4,12 @@ Markdown
 ## syntax
 - [John Gruber's (inventor)](http://daringfireball.net/projects/markdown/syntax)
     - [Chinese Version](http://wowubuntu.com/markdown)
+- [Github Flavored Markup, GFM](https://help.github.com/categories/writing-on-github/)
+- [CommonMark](http://commonmark.org/)
+- [MultiMarkdown](http://fletcherpenney.net/multimarkdown/)
+
+## parser
+- [Choosing the Right Markdown Parser](https://css-tricks.com/choosing-right-markdown-parser/) [CN](http://gold.xitu.io/entry/56ce79db1532bc0053728c2f)
 
 ## Quickstart
 - [认识与入门 Markdown](http://sspai.com/25137)
