@@ -68,4 +68,3 @@ let component = <Component {...props} />;
 ```jsx
 <div>{['First ', <span>&middot;</span>, ' Second']}</div>
 ```
-

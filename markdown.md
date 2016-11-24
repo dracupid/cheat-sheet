@@ -24,6 +24,7 @@ Markdown
 
 #### headers
 - Setext-style
+
     ```
     This is an H1
     =============
@@ -34,6 +35,7 @@ Markdown
     - Any number of underlining =’s or -’s will work.
 
 - Atx-style
+
     ```
     # This is an H1
 
@@ -66,6 +68,7 @@ id sem consectetuer libero luctus adipiscing.
 
 #### lists
 - Unordered lists (`*`, `+` or `-`)
+
     ```
     -   Red
     -   Green
@@ -73,6 +76,7 @@ id sem consectetuer libero luctus adipiscing.
     ```
 
 - Ordered lists (numbers you use to mark the list have no effect)
+    
     ```
     1.  Bird
     2.  McHale
@@ -81,6 +85,7 @@ id sem consectetuer libero luctus adipiscing.
 
 #### code blocks
 - Indent every line of the block by at least 4 spaces or 1 tab
+    
     ```
     This is a normal paragraph:
 
@@ -89,6 +94,7 @@ id sem consectetuer libero luctus adipiscing.
 
 #### horizontal
 Placing three or more `*`, `-`, or `_` on a line by themselves.
+
 ```
 * * *
 
@@ -167,3 +173,5 @@ Use the `printf()` function.
 
 #### backslash escapes
 - use backslash escapes to generate characters which have special meaning in Markdown.
+
+
